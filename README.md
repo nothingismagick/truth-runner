@@ -22,7 +22,75 @@ A single source of truth (SSoT) is a good beginning to any software project, but
 ```
 
 ### 0. Define the semantics of the SPECifications
-The semantics of your structure will make it possible for you to read and write the specification of the entire system (or systems if there are several). With prototyping you can define classes and inheritance and use domains to link similar concepts - even other domains. The yml structure is a good approach in that it is free of unimportant characters and is easy for a human to flyover. 
+The semantics of your structure will make it possible for you to read and write the specification of the entire system (or systems if there are several). With prototyping you can define classes and inheritance and use domains to link similar concepts - even other domains. The yaml structure is a good approach in that it is relatively free of unimportant characters and is easy for a human to flyover and immediately recognize inheritance. 
+
+#### Terms
+```yaml
+# Truth File Definition
+# Assumes yaml conventions
+
+
+# Structural operators
+  # meta 
+    //   comment
+    \\   endcomment
+    %    definition
+    *    placeholder
+
+  # scaffolding  
+    °    set of all sets
+    %    portion of set
+    :    group
+    .    chain
+    ,    member
+    
+  # references  
+    <    previous member 
+    >    next member    
+    +    new
+    ^    parent 
+    -    child
+    |    bridge
+    =    equivalence 
+  
+  # groups      
+    []   class
+    ()   function
+    {}   variable
+  
+  # types  
+    !$   string
+    !#   number
+    !0   boolean
+    
+  # booleans
+    0    false
+    1    true
+         undefined
+
+  # helpers
+    "    expansion
+    '    literal (no coersion)
+
+# Schema classes
+ 
+    [@]  domain
+    [~]  subject
+    [∆]  predicate
+    [Ω]  object
+ 
+
+Chaining Truth
+ # Uptruth      Push truth upward toward the spec (aka Truth proxy)
+  [$t.up(*)] 
+ # Downtruth    Push truth downward from the spec (implicit movement)
+  [$t.down(*)]
+ # Floodtruth   Push truth upward and downward (testing manoeuvre) 
+  [$t.flood(*)]
+```
+
+
+1. Write a well-formed SPEC
 
 The form of domain:subject:predicate:object is modular enough to really describe any kind of specification.
 
@@ -123,58 +191,11 @@ form
 
 </details>
 
-### Terms
-```yaml
-# Truth File Definition
-# Assumes yaml conventions
-
-
-# Structural operators
-
-  //   comment
-  %    definition
-  =    equivalence 
-  *    placeholder
-  °    set of all sets
-  %    portion of set
-  
-  ,    group
-  .    chain
-  <    previous chain 
-  >    next chain    
-  -    child
-  ^    parent 
-  +    new
-  "    expansion 
-  '    literal
-  []   class
-  ()   function
-  {}   variable
-  !    type 
-  !$   string
-  !#   number
-  !0   boolean
-  0    false
-  1    true
-
-# Schema classes
- 
-  [@]  domain
-  [~]  subject
-  [∆]  predicate
-  [Ω]  object
- 
-
-Chaining Truth
- # Uptruth:     Push truth upward toward the spec (aka Truth proxy)
-  [$t.up(*)] 
- # Downtruth:   Push truth downward from the spec (implicit movement)
-  [$t.down(*)]
- # Floodtruth:  Push truth upward and downward (testing manoeuvre) 
-  [$t.flood(*)]
-```
 
 ## Resources
+
+#### Translating
+- awk as a CLI tool for transformations
 
 #### OpenAPI / schema foundation
 - https://swagger.io/specification/
