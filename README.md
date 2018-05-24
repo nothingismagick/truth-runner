@@ -27,58 +27,86 @@ The semantics of your structure will make it possible for you to read and write 
 
 #### Terms
 ```yaml
-# Truth File Definition
-# Assumes yaml conventions
-
-
-# Structural operators
-  # meta 
-    //   comment
-    \\   endcomment
+# Symbols for Truth File Usage
+# Spec 0.0.1
+# Assumes yaml-esque conventions
+#
+#
+### meta__________________// 
     %    definition
+    /    comment          
     *    placeholder
-
-  # scaffolding  
-    °    set of all sets
-    %    portion of set
-    :    group
-    .    chain
-    ,    member
-    
-  # references  
-    <    previous member 
-    >    next member    
-    +    new
+#
+### scaffolding___________// descriptive 
+    ∞    set of all sets  // the entire body of truth
+    %    set              // one set is by nature a definition
+    °    portion of set   // one set is a portion of all sets.
+    :    group            // linkage to similar types, groups, sets
+    .    chain            // connector between horizontal siblings
+    ,    member           // context aware member of a type, group, set
+#    
+### members_______________// referential  
+    <    previous         // used as if, input
+    >    next             // used as then, output
     ^    parent 
-    -    child
-    |    bridge
-    =    equivalence 
-  
-  # groups      
+    ;    child
+    ,    sibling          // sibling is an equivalent member
+    .    self             // smallest link in a chain
+#    
+### groups________________// 
     []   class
     ()   function
     {}   variable
-  
-  # types  
-    !$   string
-    !#   number
-    !0   boolean
+#          
+### operators_____________// actively brnfckng you since 2018
+    +    push             // +1 add true = define = create
+    -    pop              // -0 remove false = undefined = destroy
+    |    bridge           // chain unrelated groups I< | > O
+    ≈    equivalence      // for passing member traits
+    =    exact
+    >>   write
+    <<   read
+    
+#          
+### comparators___________// actively brnfckng you since 2018    
+    ?    test             
+    <    if               < * > !*
+    !<   not if
+    >    then
+    !>   else
+    <!>  else if
+    :    or               
+    !:   and 
+    \    while
+    
+    EXAMPLES: 
+      ? * ! > * !!             // If "*" is false, then make "*" true.
+      \ ? * !! > >> *         // While "*" true, then write "*" to output
+    
+# 
+### typecasting___________// 
+    $   string            // non-numeric data
+    #   number            // always assumes the largest possible resolution
+    0   boolean           // 1 is also possible and means default true
     
   # booleans
-    0    false
-    1    true
-         undefined
+    !    false
+    !!   true
+    _    undefined        (implicitly an empty space, explicitly an underscore)
 
   # helpers
-    "    expansion
-    '    literal (no coersion)
+    "    expansion        (assume all possible expansion except explicit literals)
+    '    literal          (no coersion)
 
 # Schema classes
     [@]  domain
     [~]  subject
     [∆]  predicate
     [Ω]  object
+    [L]  language
+    [R]  runtime 
 ```
+Or you could just use TAP with Chai and Sinon.
 
 
 ## 1. Write a well-formed SPEC
@@ -101,7 +129,7 @@ This looks like weird stuff, but that is because it is a prototype for:
 
 ## 2. Choose your DESTinations
 
-Destinations are like build pipelines in docker configs. By determining your targets / runtimes, it is possible for you to actually write translating code generation scripts.
+Destinations are like build pipelines in docker configs. By determining your targets / runtimes, it is possible for you to actually write translating code generation scripts - but you can't write any translators until you have a spec.
 
 ## 3. Write TRANslators
 By using this "single source of truth" as an input and four different "translating" engines as output, you get everything at one time...
@@ -228,6 +256,9 @@ Chaining Truth
 - https://vuepress.vuejs.org (pure vue)
 - https://storybook.js.org/addons/addon-gallery/
 - https://sourcey.com/spectacle/ (OpenAPI/Swagger compliant )
+
+#### Tests
+- https://github.com/storybooks/storybook/tree/master/addons/jest (live storybook jest FTW!)
 
 #### Functional Programming
 - https://github.com/getify/Functional-Light-JS
