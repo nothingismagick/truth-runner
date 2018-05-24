@@ -2,7 +2,7 @@
 
 A single source of truth (SSoT) is a good beginning to any software project, but the hard work usually lies in actually writing the code. "Modern" project development paradigms focus on task isolation, the reinforcement of managerial structures and a type of workflow that tries to turn people into machines. This project is different.
 
-## Stages of Truth
+### Stages of Truth
 ```
 0. Define the semantics of the SPECifications
 1. Write a well-formed SPEC
@@ -16,12 +16,13 @@ A single source of truth (SSoT) is a good beginning to any software project, but
  g. Content
  h. Documentation
  i. CI Pipeline
+ j. ML Training Set
 3. Write TRANslators 
 4. Generate MANIfest
 5. Run truth
 ```
 
-### 0. Define the semantics of the SPECifications
+## 0. Define the semantics of the SPECifications
 The semantics of your structure will make it possible for you to read and write the specification of the entire system (or systems if there are several). With prototyping you can define classes and inheritance and use domains to link similar concepts - even other domains. The yaml structure is a good approach in that it is relatively free of unimportant characters and is easy for a human to flyover and immediately recognize inheritance. 
 
 #### Terms
@@ -73,24 +74,14 @@ The semantics of your structure will make it possible for you to read and write 
     '    literal (no coersion)
 
 # Schema classes
- 
     [@]  domain
     [~]  subject
     [∆]  predicate
     [Ω]  object
- 
-
-Chaining Truth
- # Uptruth      Push truth upward toward the spec (aka Truth proxy)
-  [$t.up(*)] 
- # Downtruth    Push truth downward from the spec (implicit movement)
-  [$t.down(*)]
- # Floodtruth   Push truth upward and downward (testing manoeuvre) 
-  [$t.flood(*)]
 ```
 
 
-1. Write a well-formed SPEC
+## 1. Write a well-formed SPEC
 
 The form of domain:subject:predicate:object is modular enough to really describe any kind of specification.
 
@@ -100,13 +91,19 @@ The form of domain:subject:predicate:object is modular enough to really describe
 ```
 
 This looks like weird stuff, but that is because it is a prototype for:
-- a vue constructor in Quasar
+- a vue constructor in Quasar for an input form field
 - a unit test in Mocha-Chai-Sinon
 - an e2e test in Cypress flavor
-- documentation vis JSDoc(edited)
+- documentation vis JSDoc
 - translation keys
 - a database
+- ...
 
+## 2. Choose your DESTinations
+
+Destinations are like build pipelines in docker configs. By determining your targets / runtimes, it is possible for you to actually write translating code generation scripts.
+
+## 3. Write TRANslators
 By using this "single source of truth" as an input and four different "translating" engines as output, you get everything at one time...
 
 <details>
@@ -190,6 +187,21 @@ form
 ```
 
 </details>
+
+
+### 4. Generate Manifest
+
+```yaml
+Chaining Truth
+    # Uptruth      Push truth upward toward the spec (aka Truth proxy)
+     [$t.up(*)] 
+    # Downtruth    Push truth downward from the spec (implicit movement)
+     [$t.down(*)]
+    # Floodtruth   Push truth upward and downward (testing manoeuvre) 
+     [$t.flood(*)]
+```
+
+### 5. Run Truth
 
 
 ## Resources
