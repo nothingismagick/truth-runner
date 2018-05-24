@@ -99,7 +99,7 @@ a state constructor for vuex
 
 ```js
 const helpers = require('../helpers');
-const truth = require('../../pages/registration/json/applicationsContentCondensed.json');
+const truth = require('../json/truth_generated.json');
 letcontact = {};
 
 let objectPath = truth.data.summary.fieldLabels.contactInfo;
@@ -114,25 +114,30 @@ export default {
     ...
 ```
 
-one liner for constructing the form
+form
 ```html
-<q-input for="input in store.get.data.contactInfo.inputs" placeholder="`input.placeholder`" v-model="`input.type`">
+<truth>
+    <q-input for="input in store.get.data.contactInfo.inputs" placeholder="`input.placeholder`" v-model="`input.type`">
+</truth>
 ```
 
 </details>
 
-## Terms
+### Terms
 ```yaml
 # Truth File Definition
 # Assumes yaml conventions
 
 
-# Structure
-%struct
+# Structural operators
+
   //   comment
   %    definition
   =    equivalence 
   *    placeholder
+  °    set of all sets
+  %    portion of set
+  
   ,    group
   .    chain
   <    previous chain 
@@ -140,20 +145,24 @@ one liner for constructing the form
   -    child
   ^    parent 
   +    new
- [°]   class
- ($)   function
- {§}   variable
-  !*   type 
+  "    expansion 
+  '    literal
+  []   class
+  ()   function
+  {}   variable
+  !    type 
   !$   string
   !#   number
   !0   boolean
+  0    false
+  1    true
 
-# Schema
-%def 
-  @    domain
-  ~    subject
-  ∆    predicate
-  Ω    object
+# Schema classes
+ 
+  [@]  domain
+  [~]  subject
+  [∆]  predicate
+  [Ω]  object
  
 
 Chaining Truth
@@ -165,28 +174,29 @@ Chaining Truth
   [$t.flood(*)]
 ```
 
+## Resources
 
-### OpenAPI / schema foundation
+#### OpenAPI / schema foundation
 - https://swagger.io/specification/
 
-### Vue / Quasar
+#### Vue / Quasar
 - Think about a custom "vue component".
 - https://github.com/bloodf/Quasar-StoreRoutes
 - https://github.com/QingWei-Li/vuep (interactive building)
 
-### interface
+#### interface
 - http://wiredjs.com/ cute
 
-### i18n
+#### i18n
 - A nice VUEX version of i18n: https://github.com/dkfbasel/vuex-i18n
 
-### Docs Generation
+#### Docs Generation
 - https://github.com/QingWei-Li/docsify/ (on the fly from markdown)
 - https://vuepress.vuejs.org (pure vue)
 - https://storybook.js.org/addons/addon-gallery/
 - https://sourcey.com/spectacle/ (OpenAPI/Swagger compliant )
 
-### Functional Programming
+#### Functional Programming
 - https://github.com/getify/Functional-Light-JS
 - https://github.com/fantasyland/fantasy-land
 - https://github.com/trekhleb/javascript-algorithms
