@@ -25,7 +25,7 @@ A single source of truth (SSoT) is a good beginning to any software project, but
 ## 0. Define the semantics of the SPECifications
 The semantics of your structure will make it possible for you to read and write the specification of the entire system (or systems if there are several). With prototyping you can define classes and inheritance and use domains to link similar concepts - even other domains. The yaml structure is a good approach in that it is relatively free of unimportant characters and is easy for a human to flyover and immediately recognize inheritance. 
 
-If you click below on DETAILS, you will see an example custom symbol definition spec, worked out in rather painful detail. The point of the exercise is to define a set of symbols that can be used as abstractions, leading to a set of tests for constructing and parsing binary & boolean values that map exquisitely to natural language. This work accidentally revealed a novel method of tracking signed zeros and superposited eigenstates within the undefined boolean value. Fun stuff!
+If you click below on **Details**, you will see an example custom symbol definition spec, worked out in rather painful detail. The point of the exercise is to define a set of symbols that can be used as abstractions, leading to a set of tests for constructing and parsing binary & boolean values that map exquisitely to natural language. This work accidentally revealed a novel method of tracking signed zeros and superposited eigenstates within the undefined boolean value. Fun stuff!
  
 <details>
 
@@ -286,6 +286,10 @@ form
 
 ## 4. Generate Manifest
 
+The manifest is actually a multidimensional Data-Flow Graph in which the representation of each node in each dimension is an operation (op) of lambda calculus undertaken as defined by the system's current state of truth. An op has zero or more inputs, zero or more outputs and internal state that may be defined by constants or variables of any type (object, function, boolean). Edges between ops are data flows from and to these operations. TBC
+ 
+
+
 ```yaml
 Chaining Truth
     # Uptruth      Push truth upward toward the spec (aka Truth proxy)
@@ -299,6 +303,9 @@ Chaining Truth
 ## 5. Run Truth
 
 Actually the fun part. This is when you get to go get coffee, take a break. While you are out, you might realize that the spec needs to be changed. So you get back, rewrite the spec and then regenerate the manifest and send the job to the truth runner. Of course, on a rainy day, you might even decide to rework some of the translators. Tree-shaking and lambda substitution take care of all of the hard work for you - and because the manifest has not changed, you just need to set the runner loose...
+
+
+The truth runner 
 
 
 
@@ -317,6 +324,7 @@ Actually the fun part. This is when you get to go get coffee, take a break. Whil
 
 #### interface
 - http://wiredjs.com/ cute
+- pug (was jade) - uses mixins, compliant with quasar
 
 #### i18n
 - A nice VUEX version of i18n: https://github.com/dkfbasel/vuex-i18n
@@ -334,6 +342,18 @@ Actually the fun part. This is when you get to go get coffee, take a break. Whil
 - https://github.com/getify/Functional-Light-JS
 - https://github.com/fantasyland/fantasy-land
 - https://github.com/trekhleb/javascript-algorithms
+
+#### WebAssembly
+- asm.js - see colin eberhardt
+- emscripten => openGL => webGL (game engine stuff)
+- [webassembly syntax](https://webassembly.github.io/spec/core/syntax/index.html)
+- https://github.com/ballercat/walt js style webassembly 
+- https://github.com/AssemblyScript/assemblyscript
+- Rust => webassembly
+- asmdom
+
+#### ML 
+- Intel nGraph
 
 ### Contributors
 @nothingismagick
