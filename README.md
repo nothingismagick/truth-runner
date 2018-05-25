@@ -284,7 +284,7 @@ form
 </details>
 
 
-### 4. Generate Manifest
+## 4. Generate Manifest
 
 ```yaml
 Chaining Truth
@@ -296,7 +296,7 @@ Chaining Truth
      [$t.flood(*)]
 ```
 
-### 5. Run Truth
+## 5. Run Truth
 
 Actually the fun part. This is when you get to go get coffee, take a break. While you are out, you might realize that the spec needs to be changed. So you get back, rewrite the spec and then regenerate the manifest and send the job to the truth runner. Of course, on a rainy day, you might even decide to rework some of the translators. Tree-shaking and lambda substitution take care of all of the hard work for you - and because the manifest has not changed, you just need to set the runner loose...
 
