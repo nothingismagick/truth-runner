@@ -25,18 +25,23 @@ A single source of truth (SSoT) is a good beginning to any software project, but
 ## 0. Define the semantics of the SPECifications
 The semantics of your structure will make it possible for you to read and write the specification of the entire system (or systems if there are several). With prototyping you can define classes and inheritance and use domains to link similar concepts - even other domains. The yaml structure is a good approach in that it is relatively free of unimportant characters and is easy for a human to flyover and immediately recognize inheritance. 
 
+If you click below on DETAILS, you will see an example custom symbol definition spec, worked out in rather painful detail. The point of the exercise is to define a set of symbols that can be used as abstractions, leading to a set of tests for constructing and parsing binary & boolean values that map exquisitely to natural language. This work accidentally revealed a novel method of tracking signed zeros and superposited eigenstates within the undefined boolean value. Fun stuff!
+ 
+<details>
+
 #### Terms
-```yaml
+```
 # Symbols for Truth File Usage
-# Spec 0.0.1
+# Spec 0.0.1 
 # Assumes yaml-esque conventions
 #
 #
-### meta__________________// 
+#
+### meta__________________// not yet turing complete
     %    definition
     /    comment          
     *    placeholder
-#
+
 ### scaffolding___________// descriptive 
     ∞    set of all sets  // the entire body of truth
     %    set              // one set is by nature a definition
@@ -44,7 +49,7 @@ The semantics of your structure will make it possible for you to read and write 
     :    group            // linkage to similar types, groups, sets
     .    chain            // connector between horizontal siblings
     ,    member           // context aware member of a type, group, set
-#    
+    
 ### members_______________// referential  
     <    previous         // used as if, input
     >    next             // used as then, output
@@ -52,51 +57,120 @@ The semantics of your structure will make it possible for you to read and write 
     ;    child
     ,    sibling          // sibling is an equivalent member
     .    self             // smallest link in a chain
-#    
-### groups________________// 
+    
+### groups________________//
+    <>   group            // can also be implicit
     []   class
     ()   function
     {}   variable
-#          
-### operators_____________// actively brnfckng you since 2018
-    +    push             // +1 add true = define = create
-    -    pop              // -0 remove false = undefined = destroy
-    |    bridge           // chain unrelated groups I< | > O
-    ≈    equivalence      // for passing member traits
-    =    exact
-    >>   write
-    <<   read
-    
-#          
-### comparators___________// actively brnfckng you since 2018    
-    ?    test             
-    <    if               < * > !*
-    !<   not if
-    >    then
-    !>   else
-    <!>  else if
-    :    or               
-    !:   and 
-    \    while
-    
-    EXAMPLES: 
-      ? * ! > * !!             // If "*" is false, then make "*" true.
-      \ ? * !! > >> *         // While "*" true, then write "*" to output
-    
-# 
+
 ### typecasting___________// 
     $   string            // non-numeric data
     #   number            // always assumes the largest possible resolution
-    0   boolean           // 1 is also possible and means default true
+    _  boolean            // cast type as an explicit boolean
     
-  # booleans
+### boolean qualifier
+    _0  boolean false     // boolean type with falsealso a meta value
+    _1  boolean true      // also a meta value
+    _*  boolean           // meta truth value 
+    _?    undefined        
     !    false
-    !!   true
-    _    undefined        (implicitly an empty space, explicitly an underscore)
+    !!   true           
+    ?!   truthy           // fuzzy / undefined truth / uncollapsed truth matrix
+    !?   falsey           // fuzzy / undefined false / uncollapsed truth matrix
+         
+### comparators___________// actively brnfckng you since 2018    
+    <    if              1 < * > !*
+    <!   not if           <! A : B > is .nor(A,B) = .not(A).or(B)
+    <!!  only if
+    >    then
+    !>   then not
+    !!>  only else
+    <!>  else if
+    :    or
+    !    not            same as false
+    !:   not or         (neither)
+    &    and 
+    &!   and not              
+    &:   and or     
+    \    while
+        
+### operators_____________// actively brnfckng you since 2018
+    +    push             // +1 add true = define = create
+    -    pull (pop)       // -0 remove false = undefined = destroy
+    |    bridge           // chain unrelated groups I< | > O
+    ≈    equivalence      // for passing member traits
+    =    exact            // as prefix means calculate
+ 
+    +<   read from
+    >+   write to
+    _?   
+         
+### helpers_______________// 
+    "*"  expansion        expand except explicit literals
+    '*'  literal          no coersion
 
-  # helpers
-    "    expansion        (assume all possible expansion except explicit literals)
-    '    literal          (no coersion)
+### lambda symbols
+    V    variables
+    Λ    lambda expressions
+    λ    lambda
+    .    dot
+    ()   parenthesis
+    :=   substitute         // written E[V := R]
+    |    or
+         
+    
+EXAMPLES:
+  
+ Boolean Construction
+  _? < _0 !: _1      Undefined if neither false nor true
+  _? <! _0 : _1      Undefined if both not false and not true    
+  _1 : _? !> _0      Either true or undefined then not false
+  _1 <! _0 : _?      True if both not false and not undefined
+  
+ True / False Meta Boolean
+  _* < _?:_0:_1 >     Meta boolean can be undefined, false or true)
+  !_1* > _0*
+  !!_0* > _1*     
+  
+ Definition of undefined
+  // If "*" is not true and not false then "*" is undefined.
+  _1 & _0 <! $* > _* = ?          
+  _? = _* < $* !> 1 & 0
+  
+  This means that truth is either explicit or undefined.
+  
+  Binary definitions of truth, false, truthy and falsey
+  !_1* > _0*       true push false  =  false
+  _0+!=0       false push false = false
+  0+1=1       false push true  = true
+  1+1=1       true push true   = true
+  
+  a false zero is a one (falsey false is true)
+  
+  Undefined
+  1-1=?       true pull true   = undefined
+  0-0=?       false pull false = undefined
+  0-1=?       False pull true  = undefined
+  1-0=?       True pull false  = undefined
+  0+0=0       zero push zero = still zero
+  0-0=?       (zero pop zero = undefined)       
+  -1+1=-0     (negative signed zero is a post-truthy false)
+  +1-1=+0     (positive signed zero is a post-truthy false)
+       
+  // While the string "*" exists, then its meta-boolean is true
+  \ $* !! > 1*     
+  \ $* !! > _* = _1
+  
+  
+  
+  
+  ? * ! > * !!             // If "*" is false, then truthify "*" (1*).
+  
+        
+  ? 1 ! :0   
+
+
 
 # Schema classes
     [@]  domain
@@ -106,7 +180,7 @@ The semantics of your structure will make it possible for you to read and write 
     [L]  language
     [R]  runtime 
 ```
-Or you could just use TAP with Chai and Sinon.
+Or you could just build everything using TAP.
 
 
 ## 1. Write a well-formed SPEC
