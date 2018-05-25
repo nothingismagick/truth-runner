@@ -196,7 +196,7 @@ This looks like weird stuff, but that is because it is a prototype for:
 
 ## 2. Choose your DESTinations
 
-Destinations are like build pipelines in docker configs. By determining your targets / runtimes, it is possible for you to actually write translating code generation scripts - but you can't write any translators until you have a spec.
+Destinations are like build pipelines in docker configs. By determining your targets / runtimes, it is possible for you to actually write translating code generation scripts - but you can't write any translators until you have a spec. For the sake of argument, we are going to assume that our target languages are html, css, commonjs, vue and es6 and our target runtimes are nodejs, babel, webpack, quasar, cypress and jest.
 
 ## 3. Write TRANslators
 By using this "single source of truth" as an input and four different "translating" engines as output, you get everything at one time...
