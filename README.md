@@ -180,6 +180,9 @@ EXAMPLES:
     [L]  language
     [R]  runtime 
 ```
+
+</details>
+
 Or you could just build everything using TAP.
 
 
