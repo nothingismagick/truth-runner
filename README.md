@@ -67,29 +67,29 @@ If you click below on DETAILS, you will see an example custom symbol definition 
 ### typecasting___________// 
     $   string            // non-numeric data
     #   number            // always assumes the largest possible resolution
-    _  boolean            // cast type as an explicit boolean
+    _   boolean           // cast type as an explicit boolean
     
 ### boolean qualifier
-    _0  boolean false     // boolean type with falsealso a meta value
-    _1  boolean true      // also a meta value
-    _*  boolean           // meta truth value 
-    _?    undefined        
+    _0   boolean false    // boolean type with falsealso a meta value
+    _1   boolean true     // also a meta value
+    _*   boolean          // meta truth value 
+    _?   undefined        
     !    false
     !!   true           
     ?!   truthy           // fuzzy / undefined truth / uncollapsed truth matrix
     !?   falsey           // fuzzy / undefined false / uncollapsed truth matrix
          
-### comparators___________// actively brnfckng you since 2018    
-    <    if              1 < * > !*
-    <!   not if           <! A : B > is .nor(A,B) = .not(A).or(B)
+### comparators___________// actually one nor is enough...    
+    <    if              
+    <!   not if           // <! A : B > is .nor(A,B) = .not(A).or(B)
     <!!  only if
     >    then
     !>   then not
     !!>  only else
     <!>  else if
     :    or
-    !    not            same as false
-    !:   not or         (neither)
+    !    not              // same as false
+    !:   not or           // (neither)
     &    and 
     &!   and not              
     &:   and or     
@@ -105,20 +105,19 @@ If you click below on DETAILS, you will see an example custom symbol definition 
     +<   read from
     >+   write to
     _?   
-         
-### helpers_______________// 
-    "*"  expansion        expand except explicit literals
-    '*'  literal          no coersion
 
-### lambda symbols
+### lambda symbols________//
     V    variables
     Λ    lambda expressions
     λ    lambda
     .    dot
     ()   parenthesis
-    :=   substitute         // written E[V := R]
+    :=   substitute       // written E[V := R]
     |    or
-         
+          
+### helpers_______________// 
+    "*"  expansion        // expand except explicit literals
+    '*'  literal          // no coersion        
     
 EXAMPLES:
   
@@ -161,24 +160,8 @@ EXAMPLES:
   // While the string "*" exists, then its meta-boolean is true
   \ $* !! > 1*     
   \ $* !! > _* = _1
-  
-  
-  
-  
   ? * ! > * !!             // If "*" is false, then truthify "*" (1*).
-  
-        
   ? 1 ! :0   
-
-
-
-# Schema classes
-    [@]  domain
-    [~]  subject
-    [∆]  predicate
-    [Ω]  object
-    [L]  language
-    [R]  runtime 
 ```
 
 </details>
@@ -191,7 +174,14 @@ Or you could just build everything using TAP.
 The form of domain:subject:predicate:object is modular enough to really describe any kind of specification.
 
 ```
-
+### Schema classes
+    [@]  domain
+    [~]  subject
+    [∆]  predicate
+    [Ω]  object
+    [L]  language
+    [R]  runtime
+    
 @identity ~input.type(text).val(null) ∆has Ωref('Full-Name')
 ```
 
@@ -199,7 +189,7 @@ This looks like weird stuff, but that is because it is a prototype for:
 - a vue constructor in Quasar for an input form field
 - a unit test in Mocha-Chai-Sinon
 - an e2e test in Cypress flavor
-- documentation vis JSDoc
+- documentation via JSDoc
 - translation keys
 - a database
 - ...
@@ -307,6 +297,9 @@ Chaining Truth
 ```
 
 ### 5. Run Truth
+
+Actually the fun part. This is when you get to go get coffee, take a break. While you are out, you might realize that the spec needs to be changed. So you get back, rewrite the spec and then regenerate the manifest and send the job to the truth runner. Of course, on a rainy day, you might even decide to rework some of the translators. Tree-shaking and lambda substitution take care of all of the hard work for you - and because the manifest has not changed, you just need to set the runner loose...
+
 
 
 ## Resources
