@@ -313,6 +313,8 @@ The truth runner
 
 #### Translating
 - awk as a CLI tool for transformations
+- http://breuleux.net/blog/language-howto.html
+- [earl-grey](https://github.com/breuleux/earl-grey)
 
 #### OpenAPI / schema foundation
 - https://swagger.io/specification/
