@@ -356,6 +356,7 @@ The truth runner
 
 #### ML 
 - Intel nGraph
+- https://github.com/mila-udem/myia
 
 ### Contributors
 @nothingismagick
