@@ -1,5 +1,9 @@
 # truth-runner
+> This project will deliver a CLI that watches a well-formed SPEC (we call it a **single source of truth**) and uses handmade translating and transpiling services to scaffold, build, test and document a complete Vue.js project and all of its artifacts, including source code, configurations, icons, databases, distributables, cordova and electron apps (using the Quasar Framework). Any change to any of the files or spec will work its way "upstream" and "downstream", thus making it possible to change the spec by writing code.
 
+> In the immediate future, there will also be a "shadow runner" that attempts to use machine learning instead of handmade translators.
+
+### Background
 A single source of truth (SSoT) is a good beginning to any software project, but the hard work usually lies in actually writing the code. "Modern" project development paradigms focus on task isolation, the reinforcement of managerial structures and a type of workflow that tries to turn people into machines. This project is different.
 
 ### Stages of Truth
@@ -320,9 +324,12 @@ The truth runner
 - https://swagger.io/specification/
 
 #### Vue / Quasar
-- Think about a custom "vue component".
-- https://github.com/bloodf/Quasar-StoreRoutes
+- Think about a custom "vue component template type": `<truth>`.
 - https://github.com/QingWei-Li/vuep (interactive building)
+- https://github.com/bloodf/Quasar-StoreRoutes (create routes from the store)
+- https://github.com/tomers/vue-form-generator (is currently being patched to work with quasar)
+- https://github.com/quasarframework/quasar-icon-factory
+- https://github.com/quasarframework/quasar-testing/projects/2
 
 #### interface
 - http://wiredjs.com/ cute
@@ -335,7 +342,8 @@ The truth runner
 - https://github.com/QingWei-Li/docsify/ (on the fly from markdown)
 - https://vuepress.vuejs.org (pure vue)
 - https://storybook.js.org/addons/addon-gallery/
-- https://sourcey.com/spectacle/ (OpenAPI/Swagger compliant )
+- https://sourcey.com/spectacle/ (OpenAPI/Swagger compliant)
+- https://documentjs.com
 
 #### Tests
 - https://github.com/storybooks/storybook/tree/master/addons/jest (live storybook jest FTW!)
@@ -357,6 +365,9 @@ The truth runner
 #### ML 
 - Intel nGraph
 - https://github.com/mila-udem/myia
+
+#### Science
+- https://nautil.us/blog/how-brain-waves-surf-sound-waves-to-process-speech
 
 ### Contributors
 @nothingismagick
