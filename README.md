@@ -1,6 +1,14 @@
 # truth-runner
 > This project will deliver a CLI that watches a well-formed SPEC (we call it a **single source of truth**) and uses handmade translating and transpiling services to scaffold, build, test and document a complete Vue.js project and all of its artifacts, including source code, configurations, icons, databases, distributables, cordova and electron apps (using the Quasar Framework). Any change to any of the files or spec will work its way "upstream" and "downstream", thus making it possible to change the spec by writing code.
 
+
+## Roadmap
+
+- [ ] uptruth feature: Turn structured truth.yml into truth.td`(truthify(yml.src) = ((src) => {src.to._TD()})()` 
+- [ ] downtruth: Turn well-formed truth.td into truth.yml`(truthify(td.src) = ((src) => {src.to._YML()})()`
+- [ ] **shadow.diff** Construct a diff comparing failing unit test's coverage (and non-covered lines!) with subsequent successful build(s) that converges on outliers in the statistical analysis, with negative gradients on the covered stuff. We are trying to find optimal (opposite to negative) symbol combinations (using a provided dictionary) that still pass the test unit. This must take place on the ramdrive.
+- [ ] **shadow.tap** use [superscript](https://github.com/superscriptjs/superscript) / [compromise](https://github.com/spencermountain/compromise) to parse truthdown 
+
 > In the immediate future, there will also be a "shadow runner" that attempts to use machine learning instead of handmade translators.
 
 ### Background
@@ -49,10 +57,14 @@ If you click below on **Details**, you will see an example custom symbol definit
 ### scaffolding___________// descriptive 
     ∞    set of all sets  // the entire body of truth
     %    set              // one set is by nature a definition
-    °    portion of set   // one set is a portion of all sets.
+    °    unit             // one unit is a portion of all sets.
     :    group            // linkage to similar types, groups, sets
     .    chain            // connector between horizontal siblings
     ,    member           // context aware member of a type, group, set
+
+### edges_________________// descriptive 
+    -    sideside link    // A set of 2 unit = °-°
+    |    updown link      // A set of 2 sets is %|%
     
 ### members_______________// referential  
     <    previous         // used as if, input
@@ -198,6 +210,8 @@ This looks like weird stuff, but that is because it is a prototype for:
 - a database
 - ...
 
+If you have heard about markdown, then it should be pretty easy for you to pick up how to use its cousin "truthdown" (TD). Truthdown is a human readable way to write specifications that are parsed.
+
 ## 2. Choose your DESTinations
 
 Destinations are like build pipelines in docker configs. By determining your targets / runtimes, it is possible for you to actually write translating code generation scripts - but you can't write any translators until you have a spec. For the sake of argument, we are going to assume that our target languages are html, css, commonjs, vue and es6 and our target runtimes are nodejs, babel, webpack, quasar, cypress and jest.
@@ -310,7 +324,6 @@ Actually the fun part. This is when you get to go get coffee, take a break. Whil
 
 
 The truth runner 
-
 
 
 ## Resources
